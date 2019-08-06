@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="CLTFEM.UserInterfaces.ImpulseLoadUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CLTFEM.UserInterfaces"
+             mc:Ignorable="d" Width="286">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <GroupBox Header="Create a New Impulse Load">
+            <StackPanel>
+                <DockPanel>
+                    <Label Content="Node: " HorizontalAlignment="Left"/>
+                    <TextBox Style="{StaticResource TextBoxStyle}" Name="txt_NodeID"/>
+                    <Button Content="Add" Margin="5,0,0,0" Click="Button_AddNode_Click"/>
+                </DockPanel>
+                <DockPanel>
+                    <Label Content="Point 1: " HorizontalAlignment="Left"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Label Content="Force: "/>
+                        <TextBox Style="{StaticResource TextBoxStyle}"  Name="txt_force1" Text="0"/>
+                        <Label Content="Time: "/>
+                        <TextBox Style="{StaticResource TextBoxStyle}"  Name="txt_time1" Text="0"/>
+                    </StackPanel>
+                </DockPanel>
+                <DockPanel>
+                    <Label Content="Point 2: " HorizontalAlignment="Left"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Label Content="Force: "/>
+                        <TextBox Style="{StaticResource TextBoxStyle}"  Name="txt_force2" Text="0"/>
+                        <Label Content="Time: "/>
+                        <TextBox Style="{StaticResource TextBoxStyle}"  Name="txt_time2" Text="0"/>
+                    </StackPanel>
+                </DockPanel>
+                <DockPanel>
+                    <Label Content="Point 3: " HorizontalAlignment="Left"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Label Content="Force: "/>
+                        <TextBox Style="{StaticResource TextBoxStyle}" Name="txt_force3" Text="0"/>
+                        <Label Content="Time: "/>
+                        <TextBox Style="{StaticResource TextBoxStyle}" Name="txt_time3" Text="0"/>
+                    </StackPanel>
+                </DockPanel>
+            </StackPanel>
+        </GroupBox>
+        <StackPanel Grid.Row="1">
+            <Button Style="{StaticResource ButtonStyle}" Content="Add Impulse Load" Click="Button_Add_Click"/>
+            <Button Style="{StaticResource ButtonStyle}" Content="Remove Impulse Load" Click="Button_Delete_Click"/>
+        </StackPanel>
+        <ListBox Grid.Row="2" Name="loads_ListBox" Style="{StaticResource ListBoxStyle}"/>
+    </Grid>
+</UserControl>

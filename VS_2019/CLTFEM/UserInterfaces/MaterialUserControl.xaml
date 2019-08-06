@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="CLTFEM.UserInterfaces.MaterialUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CLTFEM.UserInterfaces"
+             mc:Ignorable="d" Loaded="UserControl_Loaded" Width="240">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <GroupBox Header="Create a new material">
+                <StackPanel Grid.Row="0">
+                    <GroupBox>
+                        <GroupBox.Header>
+                            <StackPanel>
+                                <CheckBox Name="chk_Elastic" Content="Elastic Material" VerticalAlignment="Center" IsChecked="True" Unchecked="chk_Elastic_Unchecked" Checked="chk_Elastic_Checked"/>
+                            </StackPanel>
+                        </GroupBox.Header>
+                        <StackPanel Name = "elasticRegion">
+                            <DockPanel>
+                                <Label Content="Ex" HorizontalAlignment="Left"/>
+                                <TextBox Name="_EX" Text="100000" Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Right"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="Ey" HorizontalAlignment="Left"/>
+                                <TextBox Name="_EY" Text="100000" Style="{StaticResource TextBoxStyle}"  HorizontalAlignment="Right"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="Gxy" HorizontalAlignment="Left"/>
+                                <TextBox Name="_GXY" Text="100000" Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Right"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="Gyz" HorizontalAlignment="Left"/>
+                                <TextBox Name="_GYZ" Text="100000" Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Right"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="Gxz" HorizontalAlignment="Left"/>
+                                <TextBox Name="_GXZ" Text="100000" Style="{StaticResource TextBoxStyle}"  HorizontalAlignment="Right"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="Poisson Ratio XY" HorizontalAlignment="Left"/>
+                                <TextBox Name="_poisson" Text="0.15" Style="{StaticResource TextBoxStyle}" VerticalContentAlignment="Center" HorizontalAlignment="Right"/>
+                            </DockPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox>
+                        <GroupBox.Header>
+                            <StackPanel>
+                                <CheckBox Name="chk_Nonlinear" Content="Spring Nonlinear Material" VerticalAlignment="Center" Unchecked="chk_Nonlinear_Unchecked" Checked="chk_Nonlinear_Checked"/>
+                            </StackPanel> 
+                        </GroupBox.Header>
+                        <StackPanel>
+                            <StackPanel Name = "nonlinearRegion" Grid.Row="0">
+                                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                    <Label Content="Type" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <RadioButton Name="rd_Axial" Content="Axial" VerticalAlignment="Center" Margin="5,5,5,5" IsChecked="True" Checked="rd_Axial_Checked"/>
+                                    <RadioButton Name="rd_General" Content="General" VerticalAlignment="Center" Margin="5,5,5,5" Checked="rd_General_Checked"/>
+                                </StackPanel>
+                                <DockPanel>
+                                    <Label Content="Initial Stiffness" HorizontalAlignment="Left"/>
+                                    <TextBox Name="_iniStiff" Text="140" Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Right"/>
+                                </DockPanel>
+                                <DockPanel>
+                                    <Label Content="Compressive Stiffness" HorizontalAlignment="Left"/>
+                                    <TextBox Name="_compStiff" Text="100000" Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Right"/>
+                                </DockPanel>
+                                <DockPanel>
+                                    <Label Content="Peak Force" HorizontalAlignment="Left"/>
+                                    <TextBox Name="_fMax" Text="3558" Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Right"/>
+                                </DockPanel>
+                                <DockPanel>
+                                    <Label Content="Peak Displacement" HorizontalAlignment="Left"/>
+                                    <TextBox Name="_dMax" Text="64" Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Right"/>
+                                </DockPanel>
+                                <DockPanel>
+                                    <Label Content="Degrading Stiffness" HorizontalAlignment="Left"/>
+                                    <TextBox Name="_degStiff" Text="28" Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Right"/>
+                                </DockPanel>
+                                <DockPanel>
+                                    <Label Content="Residual Force" HorizontalAlignment="Left"/>
+                                    <TextBox Name="_fRes" Text="600" Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Right"/>
+                                </DockPanel>
+                                <DockPanel>
+                                    <Label Content="Ultimate Displacement" HorizontalAlignment="Left"/>
+                                    <TextBox Name="_dUlt" Text="150" Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Right"/>
+                                </DockPanel>
+                                <DockPanel>
+                                    <Label Content="Unloading Stiffness" HorizontalAlignment="Left"/>
+                                    <TextBox Name="_unlStiff" Text="150" Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Right"/>
+                                </DockPanel>
+                                <DockPanel>
+                                    <Label Content="Unloading Force" HorizontalAlignment="Left"/>
+                                    <TextBox Name="_fUnl" Text="150" Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Right"/>
+                                </DockPanel>
+                                <DockPanel>
+                                    <Label Content="Connection Stiffness" HorizontalAlignment="Left"/>
+                                    <TextBox Name="_conStiff" Text="150" Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Right"/>
+                                </DockPanel>
+                                <DockPanel>
+                                    <Label Content="Reloading Stiffness" HorizontalAlignment="Left"/>
+                                    <TextBox Name="_relStiff" Text="150" Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Right"/>
+                                </DockPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <Button Content="Add" Style="{StaticResource ButtonStyle}" Click="Add_Material_Click"/>
+                    <Button Content="Delete Selected" Style="{StaticResource ButtonStyle}" Click="Delete_Material_Click"/>
+                </StackPanel>
+            </GroupBox>
+            <ListBox Grid.Row="1" Name="materials_ListBox" MinHeight="100" SelectionChanged="Materials_ListBox_SelectionChanged" />
+        </Grid>
+    </ScrollViewer>
+</UserControl>

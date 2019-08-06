@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="CLTFEM.UserInterfaces.GraphPropSelect"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CLTFEM.UserInterfaces"
+             mc:Ignorable="d" Loaded="UserControl_Loaded" Width="240">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <GroupBox Header="Select Properties to Plot">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+                <GroupBox Header="Vertical Axis">
+                    <StackPanel>
+                        <DockPanel>
+                            <Label Content="Node ID" HorizontalAlignment="Left"/>
+                            <TextBox Name="txt_vertNodeID" Width="30" Text="1" TextChanged="Txt_nodeID_TextChanged" HorizontalAlignment="Right"/>
+                        </DockPanel>
+                        <DockPanel >
+                            <Label Content="Total Load" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <RadioButton Name="rd_xLoad" Content="X" VerticalAlignment="Center" Margin="5,5,5,5" Checked="Rd_xTrans_Checked"/>
+                                <RadioButton Name="rd_yLoad" Content="Y" VerticalAlignment="Center" Margin="5,5,5,5" IsChecked="True" Checked="Rd_yTrans_Checked"/>
+                                <RadioButton Name="rd_zLoad" Content="Z" VerticalAlignment="Center" Margin="5,5,5,5" Checked="Rd_zTrans_Checked"/>
+                            </StackPanel>
+                        </DockPanel>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Horizontal Axis">
+                    <StackPanel>
+                        <DockPanel>
+                            <Label Content="Node ID" HorizontalAlignment="Left"/>
+                            <TextBox Name="txt_nodeID" Width="30" Text="1" TextChanged="Txt_nodeID_TextChanged" HorizontalAlignment="Right"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <Label Content="Translation" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <RadioButton Name="rd_xTrans" Content="X" VerticalAlignment="Center" Margin="5,5,5,5" Checked="Rd_xTrans_Checked"/>
+                                <RadioButton Name="rd_yTrans" Content="Y" VerticalAlignment="Center" Margin="5,5,5,5" IsChecked="True" Checked="Rd_yTrans_Checked"/>
+                                <RadioButton Name="rd_zTrans" Content="Z" VerticalAlignment="Center" Margin="5,5,5,5" Checked="Rd_zTrans_Checked"/>
+                            </StackPanel>
+                        </DockPanel>
+                    </StackPanel>
+                </GroupBox>
+                <StackPanel >
+                    <Button Style="{StaticResource ButtonStyle}" Content="Select" Name="btn_Select" Click="Button_Select_Clicked"/>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+
+    </Grid>
+</UserControl>

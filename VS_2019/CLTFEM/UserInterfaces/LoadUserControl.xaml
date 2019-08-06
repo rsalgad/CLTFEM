@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="CLTFEM.UserInterfaces.LoadUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CLTFEM.UserInterfaces"
+             mc:Ignorable="d" Loaded="UserControl_Loaded" Width="255">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <GroupBox Header="Create a New Load">
+            <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Top">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  VerticalAlignment="Center">
+                        <RadioButton Name="rd_nodeID" Content="By Node ID" VerticalAlignment="Center" Margin="5,5,5,5" Checked="Rd_nodeID_Checked"/>
+                        <TextBox Name="_nodeID" Width="30" Text="0" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                        <RadioButton Name="rd_nodeCoord" Content="By Node Coordinates" IsChecked="True" VerticalAlignment="Center" Margin="5,5,5,5" Checked="Rd_nodeCoord_Checked"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="X"/>
+                            <TextBox Name="_nodeX" Width="30" Text="0"/>
+                            <Label Content="Y"/>
+                            <TextBox Name="_nodeY" Width="30" Text="0"/>
+                            <Label Content="Z"/>
+                            <TextBox Name="_nodeZ" Width="30" Text="0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+                <GroupBox Header="Load Values">
+                    <StackPanel>
+                        <DockPanel>
+                            <Label Content="Forces" HorizontalAlignment="Left"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Fx"/>
+                                    <TextBox Name="_loadX" Width="30" Text="0"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Fy" Margin="5,0,0,0"/>
+                                    <TextBox Name="_loadY" Width="30" Text="0"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Fz" Margin="5,0,0,0"/>
+                                    <TextBox Name="_loadZ" Width="30" Text="0"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </DockPanel>
+                        <DockPanel>
+                            <Label Content="Moments" HorizontalAlignment="Left"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Mx"/>
+                                    <TextBox Name="_momentX" Width="30" Text="0"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="My"/>
+                                    <TextBox Name="_momentY" Width="30" Text="0"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Mz"/>
+                                    <TextBox Name="_momentZ" Width="30" Text="0"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </DockPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,5">
+                            <RadioButton Name="rd_fixed" Content="Constant" Margin="0,0,10,0" IsChecked="True"/>
+                            <RadioButton Name="rd_increment" Content="Incremental" />
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+                <Button Style="{StaticResource ButtonStyle}" Content="Add" Click="Add_Load_Click"/>
+                <Button Style="{StaticResource ButtonStyle}" Content="Delete Selected" Click="Delete_Load_Click"/>
+            </StackPanel>
+        </GroupBox>
+        <ListBox Grid.Row="2" Name="loads_ListBox" Style="{StaticResource ListBoxStyle}"/>
+    </Grid>
+</UserControl>

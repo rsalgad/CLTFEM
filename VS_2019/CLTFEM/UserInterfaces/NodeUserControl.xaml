@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="CLTFEM.UserInterfaces.NodeUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CLTFEM.UserInterfaces"
+             mc:Ignorable="d" Loaded="UserControl_Loaded" Width="255">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0" Header="Create a New Node">
+            <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Top">
+                <GroupBox Header="Position">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="X"/>
+                            <TextBox Name="_nodeX" Style="{StaticResource TextBoxStyle}" Text="0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Y"/>
+                            <TextBox Name="_nodeY" Style="{StaticResource TextBoxStyle}" Text="0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Z"/>
+                            <TextBox Name="_nodeZ" Style="{StaticResource TextBoxStyle}" Text="0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Distance increment">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="X"/>
+                            <TextBox Name="_XIncr" Style="{StaticResource TextBoxStyle}" Text="0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Y"/>
+                            <TextBox Name="_YIncr" Style="{StaticResource TextBoxStyle}" Text="0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Z"/>
+                            <TextBox Name="_ZIncr" Style="{StaticResource TextBoxStyle}" Text="0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Number of nodes in each direction">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="X"/>
+                            <TextBox Name="_XNumb" Style="{StaticResource TextBoxStyle}" Text="1"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Y"/>
+                            <TextBox Name="_YNumb" Style="{StaticResource TextBoxStyle}" Text="1"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Z"/>
+                            <TextBox Name="_ZNumb" Style="{StaticResource TextBoxStyle}" Text="1"/>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+                <Button Style="{StaticResource ButtonStyle}" Content="Add" Click="Add_Node_Click"/>
+                <Button Style="{StaticResource ButtonStyle}" Content="Delete Selected" Click="Delete_Node_Click"/>
+            </StackPanel>
+        </GroupBox>
+        <ListBox Grid.Row="1" Name="nodes_ListBox" Margin="5,5,5,5" MinHeight="200"/>
+    </Grid>
+</UserControl>

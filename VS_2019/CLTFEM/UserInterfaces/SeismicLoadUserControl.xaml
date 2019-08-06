@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="CLTFEM.UserInterfaces.SeismicLoadUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CLTFEM.UserInterfaces"
+             mc:Ignorable="d" Width="240">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <GroupBox Header="Create a New Seismic Load">
+            <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Top">
+                <DockPanel>
+                    <Label Content="Time Step:" HorizontalAlignment="Left"/>
+                    <TextBox Name="txt_DeltaT" Style="{StaticResource TextBoxStyle}" Text="0.01" HorizontalAlignment="Right"/>
+                </DockPanel>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <GroupBox>
+                        <GroupBox.Header>
+                            <CheckBox Name="chk_XDir" Content="X direction" IsChecked="True" VerticalAlignment="Center" Checked="Chk_XDir_Checked" Unchecked="Chk_XDir_Unchecked"/>
+                        </GroupBox.Header>
+                        <StackPanel Name="gb_XDir" Orientation="Vertical" VerticalAlignment="Center">
+                            <DockPanel>
+                                <TextBox Name="txt_XDir_FileName" IsReadOnly="True" Width="150" HorizontalAlignment="Left"/>
+                                <Button Content="Choose File" Click="Select_XDirSeismic_Click" HorizontalAlignment="Right" Height="25"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="Lines to Skip:" HorizontalAlignment="Left"/>
+                                <TextBox Name="txt_XDir_LineSkip" Text="0" Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Right"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="Points Per Line:" HorizontalAlignment="Left"/>
+                                <TextBox Name="txt_XDir_PointPerLine" Text="1" Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Right"/>
+                            </DockPanel>
+                            <DockPanel >
+                                <CheckBox Name="chk_XDir_Scale" Content="Scale" VerticalAlignment="Center" Margin="0,0,5,0" Checked="Chk_XDir_Scale_Checked" Unchecked="Chk_XDir_Scale_Unchecked" HorizontalAlignment="Left"/>
+                                <TextBox Name="txt_XDir_Scale" Text="1" Style="{StaticResource TextBoxStyle}" IsEnabled="False" HorizontalAlignment="Right"/>
+                            </DockPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox >
+                        <GroupBox.Header>
+                            <CheckBox Name="chk_YDir" Content="Y direction" VerticalAlignment="Center" Checked="Chk_YDir_Checked" Unchecked="Chk_YDir_Unchecked"/>
+                        </GroupBox.Header>
+                        <StackPanel Name="gb_YDir" Orientation="Vertical" VerticalAlignment="Center" IsEnabled="False">
+                            <DockPanel>
+                                <TextBox Name="txt_YDir_FileName" IsReadOnly="True" Width="150" HorizontalAlignment="Left"/>
+                                <Button Content="Choose File" Click="Select_YDirSeismic_Click" HorizontalAlignment="Right" Height="25"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="Lines to Skip:" HorizontalAlignment="Left"/>
+                                <TextBox Name="txt_YDir_LineSkip" Text="0" Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Right"/>
+                            </DockPanel>
+                            <DockPanel >
+                                <Label Content="Points Per Line:" HorizontalAlignment="Left"/>
+                                <TextBox Name="txt_YDir_PointPerLine" Text="1" Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Right"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <CheckBox Name="chk_YDir_Scale" Content="Scale" VerticalAlignment="Center" Margin="0,0,5,0" Checked="Chk_YDir_Scale_Checked" Unchecked="Chk_YDir_Scale_Unchecked" HorizontalAlignment="Left"/>
+                                <TextBox Name="txt_YDir_Scale" Text="1" Style="{StaticResource TextBoxStyle}" IsEnabled="False" HorizontalAlignment="Right"/>
+                            </DockPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox  >
+                        <GroupBox.Header>
+                            <CheckBox Name="chk_ZDir" Content="Z direction" VerticalAlignment="Center" Checked="Chk_ZDir_Checked" Unchecked="Chk_ZDir_Unchecked"/>
+                        </GroupBox.Header>
+                        <StackPanel Name="gb_ZDir" Orientation="Vertical" VerticalAlignment="Center" IsEnabled="False">
+                            <DockPanel>
+                                <TextBox Name="txt_ZDir_FileName" IsReadOnly="True" Width="150" HorizontalAlignment="Left"/>
+                                <Button Content="Choose File" Click="Select_ZDirSeismic_Click" HorizontalAlignment="Right" Height="25"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="Lines to Skip:" HorizontalAlignment="Left"/>
+                                <TextBox Name="txt_ZDir_LineSkip" Text="0" Style="{StaticResource TextBoxStyle}"  VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="Points Per Line:" HorizontalAlignment="Left"/>
+                                <TextBox Name="txt_ZDir_PointPerLine" Text="1" Style="{StaticResource TextBoxStyle}" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <CheckBox Name="chk_ZDir_Scale" Content="Scale" VerticalAlignment="Center" Margin="0,0,5,0" Checked="Chk_ZDir_Scale_Checked" Unchecked="Chk_ZDir_Scale_Unchecked" HorizontalAlignment="Left"/>
+                                <TextBox Name="txt_ZDir_Scale" Text="1" Style="{StaticResource TextBoxStyle}" IsEnabled="False" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                            </DockPanel>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+                <Button Style="{StaticResource ButtonStyle}" Content="Add" Click="Add_SeismicLoad_Click"/>
+                <Button Style="{StaticResource ButtonStyle}" Content="Delete Selected" Click="Delete_SeismicLoad_Click"/>
+            </StackPanel>
+        </GroupBox>
+        <ListBox Grid.Row="2" Name="loads_ListBox" Style="{StaticResource ListBoxStyle}"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,186 @@
+﻿<Window xmlns:UserInterfaces="clr-namespace:CLTFEM.UserInterfaces"  x:Class="CLTFEM.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CLTFEM.Windows"
+        mc:Ignorable="d"
+        Title="CLTFEM" Height="720" Width="1280" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Ribbon SelectedIndex="2" Name="mainWindowRibbon" Grid.ColumnSpan="2" Loaded="mainWindowRibbon_Loaded">
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu SmallImageSource="/CLTFEM;component/res/newIcon32.png" >
+                    <RibbonApplicationMenuItem Header="New" Click="Button_ClearStructure_Click" />
+                    <RibbonApplicationMenuItem Header="Open" Click="Menu_Open_Click" />
+                    <RibbonApplicationMenuItem Header="Save" Click="Menu_Save_Click" />
+                    <RibbonApplicationMenuItem Header="Perspective Camera" Click="MenuItem_Camera_Pesp_Click" />
+                    <RibbonApplicationMenuItem Header="Orthographic Camera" Click="MenuItem_Camera_Ortho_Click" />
+                    <RibbonApplicationMenuItem Header="Exit" Click="Menu_Exit_Click" />
+                </RibbonApplicationMenu>
+            </Ribbon.ApplicationMenu>
+            <RibbonTab Header="Material">
+                <RibbonGroup Name="materialGroup" Header="Materials">
+                    <RibbonButton Label="Add" LargeImageSource="/CLTFEM;component/res/materialIcon64.PNG" Click="Button_Materials_Click"/>
+                </RibbonGroup>
+            </RibbonTab>
+            <RibbonTab Header="Structure">
+                <RibbonGroup Name="nodeGroup" Header="Nodes">
+                    <RibbonButton Label="Add" LargeImageSource="/CLTFEM;component/res/nodeIcon64.png" Click="Button_Nodes_Click"/>
+                </RibbonGroup>
+                <RibbonGroup Name="shellGroup" Header="Shells">
+                    <RibbonButton Label="Add" LargeImageSource="/CLTFEM;component/res/shellIcon64.png" Click="Button_Shells_Click"/>
+                </RibbonGroup>
+                <RibbonGroup Name="springGroup" Header="3D Springs" >
+                    <RibbonButton Label="Add" LargeImageSource="/CLTFEM;component/res/springIcon64.png" Margin="5,0,0,0" Click="Button_Springs_Click" />
+                </RibbonGroup>
+                <RibbonGroup Name="loadGroup" Header="Loads" >
+                    <RibbonButton Label="Add" LargeImageSource="/CLTFEM;component/res/loadIcon64.PNG" Click="Button_DefLoads_Click"/>
+                    <RibbonButton Label="Seismic" LargeImageSource="/CLTFEM;component/res/earthquake64.PNG" Click="Button_SeismicLoads_Click"/>
+                    <RibbonButton Label="Impulse" LargeImageSource="/CLTFEM;component/res/impulse64.PNG" Click="Button_ImpulseLoads_Click"/>
+                </RibbonGroup>
+                <RibbonGroup Name="massGroup" Header="Masses" >
+                    <RibbonButton Label="Add" LargeImageSource="/CLTFEM;component/res/massIcon64.png" Margin="1,0,3,0" Click="Button_DefMasses_Click" />
+                </RibbonGroup>
+                <RibbonGroup Name="supportGroup" Header="Boundaries" >
+                    <RibbonButton Label="Add" LargeImageSource="/CLTFEM;component/res/supportIcon64.png" Margin="6,0,0,0" Click="Button_DefBounds_Click"/>
+                </RibbonGroup>
+            </RibbonTab>
+            <RibbonTab Header="Analysis">
+                <RibbonGroup Name="analysisPropGroup" Header="Properties" >
+                    <RibbonButton Label="Define Analysis" LargeImageSource="/CLTFEM;component/res/analysisProperties64.png" Margin="0,0,0,0" Click="Button_DefineAnalysis_Click"/>
+                </RibbonGroup>
+                <RibbonGroup Name="runAnalysisGroup" Header="Run Analysis" >
+                    <RibbonButton Label="Start Analysis" LargeImageSource="/CLTFEM;component/res/run64.png" Margin="6,0,0,0" Click="Button_StartAnalysis_Click"/>
+                </RibbonGroup>
+            </RibbonTab>
+            <RibbonTab Header="Post-Processing">
+                <RibbonGroup Name="deformedFilesGroup" Header="Result Files">
+                    <RibbonButton Label="Open Results" LargeImageSource="/CLTFEM;component/res/filesIcon64.png" Click="Button_OpenResult_Click"/>
+                    <RibbonMenuButton Label="Open Disp Results" LargeImageSource="/CLTFEM;component/res/filesIcon64.png">
+                        <RibbonMenuItem Header="Single File" Click="Button_OpenDeformed_Click" />
+                        <RibbonMenuItem Header="Multiple Files" Click="Button_LoadStageResult_Click" />
+                    </RibbonMenuButton>
+                    <RibbonMenuButton Label="Open Force Results" LargeImageSource="/CLTFEM;component/res/filesIcon64.png">
+                        <RibbonMenuItem Header="Single File" Click="Button_OpenForceDeformed_Click" />
+                        <RibbonMenuItem Header="Multiple Files" Click="Button_ForceLoadStageResult_Click" />
+                    </RibbonMenuButton>
+                </RibbonGroup>
+                <RibbonGroup Name="deformedVisualGroup" Header="Visualization">
+                    <RibbonButton Label="Show Undeformed" LargeImageSource="/CLTFEM;component/res/undeformedIcon64.png" Click="Button_ShowUndeformed_Click"/>
+                    <RibbonMenuButton Label="Show Deformed" LargeImageSource="/CLTFEM;component/res/deformedIcon64.png" Margin="0,0,0,0">
+                        <RibbonMenuItem Header="From Single File" Click="Button_ShowDeformed_Click"/>
+                        <RibbonMenuItem Header="From Multiple Files" Click="Button_Loadsteps_Click"/>
+                        <RibbonMenuItem Header="Mode Shapes" Click="Button_ModeShapes_Click"/>
+                    </RibbonMenuButton>
+                </RibbonGroup>
+                <RibbonGroup Name="graphVisualGroup" Header="Graph Result">
+                    <RibbonButton Label="Select Properties" LargeImageSource="/CLTFEM;component/res/undeformedIcon64.png" Click="Button_SelectGraphProp_Click"/>
+                    <RibbonButton Label="Show Graph" LargeImageSource="/CLTFEM;component/res/undeformedIcon64.png" Click="Button_ShowGraph_Click"/>
+                </RibbonGroup>
+            </RibbonTab>
+            <RibbonTab Header="View">
+                <RibbonGroup Name="camAngleGroup" Header="Angles">
+                    <RibbonMenuButton Label="Axis View" LargeImageSource="/CLTFEM;component/res/axesView64.png">
+                        <RibbonMenuItem Header="XY Plane" Click="Button_XYPlane_Click"/>
+                        <RibbonMenuItem Header="XZ Plane" Click="Button_XZPlane_Click"/>
+                        <RibbonMenuItem Header="YZ Plane" Click="Button_YZPlane_Click"/>
+                        <RibbonMenuItem Header="45 Degree" Click="Button_45Degree_Click"/>
+                    </RibbonMenuButton>
+                </RibbonGroup>
+                <RibbonGroup Header="X Axis">
+                    <RibbonButton Label="+15°" LargeImageSource="/CLTFEM;component/res/xAxisPos64.png" Click="Button_XAxisPlus_Click"/>
+                    <RibbonButton Label="-15°" LargeImageSource="/CLTFEM;component/res/xAxisNeg64.png" Click="Button_XAxisMinus_Click"/>
+                </RibbonGroup>
+                <RibbonGroup Header="Y Axis">
+                    <RibbonButton Label="+15°" LargeImageSource="/CLTFEM;component/res/yAxisPos64.png" Click="Button_YAxisPlus_Click"/>
+                    <RibbonButton Label="-15°" LargeImageSource="/CLTFEM;component/res/yAxisNeg64.png" Click="Button_YAxisMinus_Click"/>
+                </RibbonGroup>
+                <RibbonGroup Header="Z Axis">
+                    <RibbonButton Label="+15°" LargeImageSource="/CLTFEM;component/res/zAxisPos64.png" Click="Button_ZAxisPlus_Click"/>
+                    <RibbonButton Label="-15°" LargeImageSource="/CLTFEM;component/res/zAxisNeg64.png" Click="Button_ZAxisMinus_Click"/>
+                </RibbonGroup>
+            </RibbonTab>
+        </Ribbon>
+        <StackPanel Name="panelUserControl" Grid.Row="1" Grid.Column="0">
+            <UserInterfaces:MaterialUserControl x:Name="materialUserControl" Visibility="Collapsed"/>
+            <UserInterfaces:NodeUserControl x:Name="nodeUserControl" Visibility="Collapsed"/>
+            <UserInterfaces:ShellUserControl x:Name="shellUserControl" Visibility="Collapsed"/>
+            <UserInterfaces:Spring3DUserControl x:Name="spring3DUserControl" Visibility="Collapsed"/>
+            <UserInterfaces:LoadUserControl x:Name="loadUserControl" Visibility="Collapsed"/>
+            <UserInterfaces:MassUserControl x:Name="massUserControl" Visibility="Collapsed"/>
+            <UserInterfaces:BoundaryUserControl x:Name="supportUserControl" Visibility="Collapsed"/>
+            <UserInterfaces:GraphPropSelect x:Name="graphPropUserControl" Visibility="Collapsed" />
+            <UserInterfaces:SeismicLoadUserControl x:Name="seismicLoadUserControl" Visibility="Collapsed"/>
+            <UserInterfaces:ImpulseLoadUserControl x:Name="impulseLoadUserControl" Visibility="Collapsed"/>
+            <UserInterfaces:AnalysisPropControl x:Name="analysisPropertiesUserControl" Visibility="Collapsed"/>
+        </StackPanel>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Border Background="White" />
+            <Rectangle Name="viewPortBackground" x:FieldModifier="public" Grid.Column="1" Fill="GhostWhite" MouseMove="ViewPortBackground_MouseMove" MouseWheel="ViewPortBackground_MouseWheel"/>
+            <Viewport3D Grid.Column="1" Name="myViewPort" MouseMove="ViewPortBackground_MouseMove" MouseWheel="ViewPortBackground_MouseWheel" MouseDown="myViewPort_MouseDown" SizeChanged="MyViewPort_SizeChanged"/>
+        </Grid>
+        <Grid Grid.Row="2" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Rectangle Fill="#FFDFE9F5"/>
+            <StackPanel Grid.Row="2" Background="#FFDFE9F5" Orientation="Horizontal" HorizontalAlignment="Right">
+                <StackPanel Name="loadStepViewerPanel" Visibility="Collapsed" Orientation="Horizontal" IsVisibleChanged="LoadStepViewerPanel_IsVisibleChanged">
+                    <StackPanel Name="natFreqViewPanel" Orientation="Horizontal" Visibility="Collapsed">
+                        <Label Content="Frequency: " />
+                        <Label Name="natFreq"/>
+                    </StackPanel>
+                    <Label Content="Load Step: "/>
+                    <Label Name="iterCount" Content="" Margin="0,0,5,0"/>
+                    <Button Content="Previous" Width="55" Margin="0,0,5,0" Click="Button_PreviousLoadStep_Click"/>
+                    <Button Content="Next" Width="55" Margin="0,0,5,0" Click="Button_NextLoadStep_Click"/>
+                    <Label Content="Scale: "/>
+                    <TextBox Text="1" Width="30" Name="txt_Scale" TextAlignment="Center" VerticalContentAlignment="Center" Height="25" VerticalAlignment="Top" />
+                    <Button Content="Change" Margin="8,0,0,0" Click="Button_ChangeScale_Click"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Camera Vector:" />
+                    <Label Content="X:" />
+                    <Label Name="lbl_camVecX" />
+                    <Label Content="Y:" />
+                    <Label Name="lbl_camVecY" />
+                    <Label Content="Z:" />
+                    <Label Name="lbl_camVecZ" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Mouse X:" />
+                    <Label Name="lbl_mouseX" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Mouse Y:" />
+                    <Label Name="lbl_mouseY" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Label Content="Length:" />
+                    <Label Name="lbl_length" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Label Content="Camera Position:" />
+                    <Label Name="lbl_camPos" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

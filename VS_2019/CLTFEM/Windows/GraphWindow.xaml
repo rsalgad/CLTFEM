@@ -1,0 +1,25 @@
+﻿<Window x:Class="CLTFEM.Windows.GraphWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CLTFEM.Windows"
+        mc:Ignorable="d"
+        Title="GraphWindow" Height="450" Width="800" Loaded="Window_Loaded" LayoutUpdated="Window_LayoutUpdated" SizeChanged="Window_SizeChanged">
+    <Grid>
+        <Canvas Name="GraphCanvas" MouseRightButtonDown="GraphCanvas_MouseRightButtonDown">
+            <Rectangle Name="bck_rectangle" Fill="White">
+                <Rectangle.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Copy Data to Clipboard" />
+                        <MenuItem Header="Show Data" Click="MenuItem_Click"/>
+                    </ContextMenu>
+                </Rectangle.ContextMenu>
+            </Rectangle>
+            <TextBlock TextWrapping="Wrap" Text="Actual Width"/>
+            <TextBlock TextWrapping="Wrap" Text="Actual Height" Canvas.Top="20"/>
+            <TextBlock Name="txt_width" TextWrapping="Wrap" Canvas.Left="80"/>
+            <TextBlock Name="txt_height" TextWrapping="Wrap" Canvas.Top="20" Canvas.Left="80"/>
+        </Canvas>
+    </Grid>
+</Window>

@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{146BCFCA-E835-4A73-B60E-440EB7DE65C8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CLTFEM</RootNamespace>
+    <AssemblyName>CLTFEM</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo_2GU_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Controls.Ribbon" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Classes\Analysis\Analyses.cs" />
+    <Compile Include="Classes\Analysis\CyclicAnalysis.cs" />
+    <Compile Include="Classes\Analysis\DynamicAnalysis.cs" />
+    <Compile Include="Classes\Analysis\ElasticAnalysis.cs" />
+    <Compile Include="Classes\Analysis\PushoverAnalysis.cs" />
+    <Compile Include="Classes\Helpers\Configuration.cs" />
+    <Compile Include="Classes\Helpers\DrawingHelper.cs" />
+    <Compile Include="Classes\Helpers\GraphHelper.cs" />
+    <Compile Include="Classes\Helpers\Management.cs" />
+    <Compile Include="Classes\Helpers\PairValue.cs" />
+    <Compile Include="Classes\Helpers\SceneHelper.cs" />
+    <Compile Include="Classes\Mathematics\MatrixMath.cs" />
+    <Compile Include="Classes\Mathematics\myPoint.cs" />
+    <Compile Include="Classes\Mathematics\Vector.cs" />
+    <Compile Include="Classes\Save_Open\OpenOperation.cs" />
+    <Compile Include="Classes\Save_Open\SaveOperation.cs" />
+    <Compile Include="Classes\Structural\CrossSection.cs" />
+    <Compile Include="Classes\Structural\ElasticMaterial.cs" />
+    <Compile Include="Classes\Structural\Element.cs" />
+    <Compile Include="Classes\Structural\ImpulseLoad.cs" />
+    <Compile Include="Classes\Structural\Load.cs" />
+    <Compile Include="Classes\Structural\Mass.cs" />
+    <Compile Include="Classes\Structural\Material.cs" />
+    <Compile Include="Classes\Structural\Node.cs" />
+    <Compile Include="Classes\Structural\OrthotropicElasticMaterial.cs" />
+    <Compile Include="Classes\Structural\SeismicLoad.cs" />
+    <Compile Include="Classes\Structural\ShellElement.cs" />
+    <Compile Include="Classes\Structural\ShellElement8N.cs" />
+    <Compile Include="Classes\Structural\Spring3D.cs" />
+    <Compile Include="Classes\Structural\SpringAxialModel.cs" />
+    <Compile Include="Classes\Structural\SpringGeneralModel.cs" />
+    <Compile Include="Classes\Structural\Support.cs" />
+    <Compile Include="UserInterfaces\AnalysisPropControl.xaml.cs">
+      <DependentUpon>AnalysisPropControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterfaces\BoundaryUserControl.xaml.cs">
+      <DependentUpon>BoundaryUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterfaces\GraphPropSelect.xaml.cs">
+      <DependentUpon>GraphPropSelect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterfaces\ImpulseLoadUserControl.xaml.cs">
+      <DependentUpon>ImpulseLoadUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterfaces\LoadUserControl.xaml.cs">
+      <DependentUpon>LoadUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterfaces\MassUserControl.xaml.cs">
+      <DependentUpon>MassUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterfaces\MaterialUserControl.xaml.cs">
+      <DependentUpon>MaterialUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterfaces\NodeUserControl.xaml.cs">
+      <DependentUpon>NodeUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterfaces\SeismicLoadUserControl.xaml.cs">
+      <DependentUpon>SeismicLoadUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterfaces\ShellUserControl.xaml.cs">
+      <DependentUpon>ShellUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterfaces\Spring3DUserControl.xaml.cs">
+      <DependentUpon>Spring3DUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\GraphDataWindow.xaml.cs">
+      <DependentUpon>GraphDataWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\GraphWindow.xaml.cs">
+      <DependentUpon>GraphWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="UserInterfaces\AnalysisPropControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInterfaces\BoundaryUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInterfaces\GraphPropSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInterfaces\ImpulseLoadUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInterfaces\LoadUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInterfaces\MassUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInterfaces\MaterialUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInterfaces\NodeUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInterfaces\SeismicLoadUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInterfaces\ShellUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInterfaces\Spring3DUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\GraphDataWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\GraphWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Windows\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\impulse.PNG" />
+    <Resource Include="res\impulse64.png" />
+    <Resource Include="res\newIcon32.png" />
+    <Resource Include="res\nodeIcon.png" />
+    <Resource Include="res\shellIcon64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\loadIcon.PNG" />
+    <Resource Include="res\nodeIcon.jpg" />
+    <Resource Include="res\shellIcon.png" />
+    <Resource Include="res\springIcon.png" />
+    <Resource Include="res\supportIcon.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\nodeIcon64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\springIcon64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\loadIcon64.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\supportIcon64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\deformedIcon.PNG" />
+    <Resource Include="res\deformedIcon64.png" />
+    <Resource Include="res\filesIcon.PNG" />
+    <Resource Include="res\filesIcon64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\undeformedIcon.PNG" />
+    <Resource Include="res\undeformedIcon64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\newIcon.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\materialIcon.PNG" />
+    <Resource Include="res\materialIcon64.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\axesView64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\axesView.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\xAxisNeg.PNG" />
+    <Resource Include="res\xAxisNeg64.png" />
+    <Resource Include="res\xAxisPos.PNG" />
+    <Resource Include="res\xAxisPos64.png" />
+    <Resource Include="res\yAxisNeg.PNG" />
+    <Resource Include="res\yAxisNeg64.png" />
+    <Resource Include="res\yAxisPos.PNG" />
+    <Resource Include="res\yAxisPos64.png" />
+    <Resource Include="res\zAxisNeg.PNG" />
+    <Resource Include="res\zAxisNeg64.png" />
+    <Resource Include="res\zAxisPos.PNG" />
+    <Resource Include="res\zAxisPos64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\startAnalysis.jpg" />
+    <Resource Include="res\startAnalysis64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\run.jpg" />
+    <Resource Include="res\run64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo_2GU_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\analysisProperties.png" />
+    <Resource Include="res\analysisProperties64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\massIcon.png" />
+    <Resource Include="res\massIcon64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\earthquake.PNG" />
+    <Resource Include="res\earthquake64.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
